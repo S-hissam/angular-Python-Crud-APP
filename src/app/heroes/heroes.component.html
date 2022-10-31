@@ -1,1 +1,74 @@
-<p>heroes works!</p>
+<mat-expansion-panel [formGroup]="newTodoForm" [expanded]="expanded" >
+  <mat-expansion-panel-header>
+    <mat-panel-title>Add New Todo</mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-form-field class="my-form-field" appearance="outline" floatLabel="always">
+    <mat-label>Todo Title
+    </mat-label>
+    <input placeholder="Do more!!" matInput formControlName='heroName' >
+  </mat-form-field>
+  <mat-form-field class="my-form-field" appearance="outline" floatLabel="always">
+    <textarea disabled placeholder="More Details,Tables.." matInput type="text" ></textarea>
+  <ckeditor formControlName='body'></ckeditor>
+  </mat-form-field>
+  <mat-card-actions align="end">
+    <button mat-mini-fab matSuffix color="accent" mat-raised-button (click)="expanded=!expanded; add(newTodoForm.value) ">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-expansion-panel>
+
+<mat-divider></mat-divider>
+
+
+<mat-card>
+  <mat-card-header>
+
+    <mat-card-title>All Todos</mat-card-title>
+  </mat-card-header>
+  <mat-form-field class="my-form-field" appearance="outline" floatLabel="always">
+
+    <input type="text" #search (input)="search.value" placeholder="Search Todos" aria-label="todos" matInput>
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <mat-selection-list #shoes [multiple]="false">
+    <ng-container *ngFor="let hero of myheroes">
+      <mat-list-option *ngIf="search.value ===''|| hero.heroName.toLowerCase().includes(search.value)" [value]="hero">
+        <div class="list-items" (click)="showDetail(hero)">
+          <span>
+            {{hero.heroName}}
+          </span>
+          <button mat-mini-fab (click)="delete(hero)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+
+      </mat-list-option>
+    </ng-container>
+  </mat-selection-list>
+</mat-card>
+
+
+<ng-template #detail>
+  <div [formGroup]="newTodoForm"  class="detail" *ngIf="hero">
+    <h2>{{hero.heroName | uppercase}} Details</h2>
+  
+    <div>
+        <mat-form-field class="my-form-field" appearance="outline" floatLabel="always">
+          <mat-label>Todo Title
+          </mat-label>
+          <input placeholder="Do more!!" matInput formControlName='heroName'>
+        </mat-form-field>
+  <ckeditor formControlName='body' [data]="hero.body"></ckeditor>
+
+    </div>
+    <button mat-mini-fab (click)="save()">
+      <mat-icon>save</mat-icon>
+    </button>
+    <button mat-mini-fab (click)="delete(hero)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</ng-template>

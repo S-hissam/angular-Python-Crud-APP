@@ -1,0 +1,10 @@
+<mat-card>
+
+  <h2>Top Heroes</h2>
+  <app-hero-search></app-hero-search>
+
+
+  <button mat-raised-button color="accent" *ngFor="let hero of heroes" routerLink="/detail/{{hero.heroId}}">
+    {{hero.heroName}}
+  </button>
+</mat-card>

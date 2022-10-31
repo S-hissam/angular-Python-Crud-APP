@@ -1,0 +1,13 @@
+
+
+::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0em !important; 
+}
+::ng-deep mat-form-field-infix {
+    padding: 0 0;
+    border-top: inherit;
+}
+
+.main-container{
+  margin: 10px;
+}

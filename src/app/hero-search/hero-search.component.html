@@ -1,0 +1,12 @@
+<form >
+  <mat-form-field class="my-form-field" appearance="outline" floatLabel="always">
+
+    <input type="text" placeholder="Search Todos Api" aria-label="todos" matInput [formControl]="term"
+      [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option routerLink="/detail/{{option.heroId}}" *ngFor="let option of result | async" [value]="option.heroName">
+        {{option.heroName}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

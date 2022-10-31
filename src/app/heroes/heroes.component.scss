@@ -1,0 +1,15 @@
+.list-items{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.list-items span{
+  font-size: large;
+  font-weight: 600;
+  width: 100%;
+
+}
+
