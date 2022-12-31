@@ -10,7 +10,7 @@ from django.core.files.storage import default_storage
 
 
 @csrf_exempt
-def say_hello(request, id=0):
+def getNotes(request, id=0):
     if request.method == 'GET':
         heros = Heros.objects.all()
         heros_serializer = HerosSerializer(heros, many=True)
