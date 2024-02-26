@@ -1,0 +1,7 @@
+Django>=3.2,<4.0
+django-admin-interface>=0.12,<0.13
+django-allauth>=0.44,<0.45
+django-cors-headers>=3.10,<4.0
+django-debug-toolbar>=3.2,<4.0
+django-filter>=2.4,<3.0
+djangorestframework>=3.12,<4.0
